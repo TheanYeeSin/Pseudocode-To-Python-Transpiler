@@ -2,7 +2,7 @@ import sys
 from Transpiler.token import Token, TokenTypes
 
 class Lexer:
-    """Lexer that break down source code into sequence of tokens."""
+    """Lexer that breaks down source code into sequence of tokens."""
     
     def __init__(self, input: str) -> None:
         self.input = input + "\n"
@@ -63,6 +63,9 @@ class Lexer:
             
         elif self.current_char == '\0': # End of file
             token = Token('', TokenTypes.EOF)
+            
+        elif self.current_char == '\t': # Indentation
+            token = Token(self.current_char, TokenTypes.INDENT)
             
         elif self.current_char == '←': # Assign
             token = Token(self.current_char, TokenTypes.EQ)

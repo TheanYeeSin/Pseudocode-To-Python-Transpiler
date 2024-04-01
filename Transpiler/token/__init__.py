@@ -31,6 +31,7 @@ class TokenTypes(Enum):
     ENDIF = 105
     WHILE = 106
     ENDWHILE = 107
+    PRINT = 108
     
     # TODO: Support more keywords
     
