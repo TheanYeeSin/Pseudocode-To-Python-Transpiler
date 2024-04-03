@@ -1,0 +1,6 @@
+IF Weight < 70 THEN
+    OUTPUT "You can continue as normal"
+ENDIF
+IF Weight > 70 THEN
+    OUTPUT "You need to start exercising more"
+ENDIF
