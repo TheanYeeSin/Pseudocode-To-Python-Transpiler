@@ -21,7 +21,6 @@ class TokenTypes(Enum):
     NUMBER = 1
     IDENT = 2 # IDENTIFIER
     STRING = 3
-    INDENT = 4
     
     # KEYWORDS
     OUTPUT = 101
@@ -30,8 +29,8 @@ class TokenTypes(Enum):
     THEN = 104
     ENDIF = 105
     WHILE = 106
-    ENDWHILE = 107
-    PRINT = 108
+    REPEAT = 107
+    ENDWHILE = 108
     
     # TODO: Support more keywords
     
