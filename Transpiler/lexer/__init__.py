@@ -27,7 +27,7 @@ class Lexer:
         sys.exit(f"Lexer error. Error: {message}")
         
     def skip_white_space(self) -> None:
-        while self.current_char == ' ' or self.current_char == '\r': # or self.current_char == '\t' 
+        while self.current_char == ' ' or self.current_char == '\r' or self.current_char == '\t':
             self.next_char()
     
     def skip_comment(self) -> None:
@@ -63,9 +63,6 @@ class Lexer:
             
         elif self.current_char == '\0': # End of file
             token = Token('', TokenTypes.EOF)
-            
-        elif self.current_char == '\t': # Indentation
-            token = Token(self.current_char, TokenTypes.INDENT)
             
         elif self.current_char == '←': # Assign
             token = Token(self.current_char, TokenTypes.EQ)
