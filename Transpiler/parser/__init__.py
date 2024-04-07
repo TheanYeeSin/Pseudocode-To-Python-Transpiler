@@ -118,15 +118,15 @@ class Parser:
 
         # "DECLARE" ident : type
         elif self.check_token(TokenTypes.DECLARE):
-            # TODO: FIX to fit pseudocode and python
+            # TODO: FIX to fit ARRAY DECLARATION
             print("STATEMENT-DECLARE")
             self.next_token()
 
-            self.emitter.emit(self.current_token.text + " = ")
-            self.match(TokenTypes.IDENT)
-            self.match(TokenTypes.EQ)
             self.expression()
-            self.emitter.emit_line("")
+            self.match(TokenTypes.COLON)
+            self.emitter.emit(":")
+            self.expression()
+            self.emitter.emit_line("= None")
 
         # "INPUT" ident
         elif self.check_token(TokenTypes.INPUT):
@@ -236,6 +236,26 @@ class Parser:
             # if self.current_token.text not in self.symbols:
             #     self.abort(f"Referencing variable before assignment: {self.current_token.text}")
             self.emitter.emit(self.current_token.text)
+            self.next_token()
+        elif self.check_token(TokenTypes.INTEGER):
+            print("TYPING-INTEGER")
+            self.emitter.emit("int")
+            self.next_token()
+        elif self.check_token(TokenTypes.REAL):
+            print("TYPING-FLOAT")
+            self.emitter.emit("float")
+            self.next_token()
+        elif self.check_token(TokenTypes.CHAR):
+            print("TYPING-CHAR")
+            self.emitter.emit("str")
+            self.next_token()
+        elif self.check_token(TokenTypes.STRING):
+            print("TYPING-STRING")
+            self.emitter.emit("str")
+            self.next_token()
+        elif self.check_token(TokenTypes.BOOLEAN):
+            print("TYPING-BOOLEAN")
+            self.emitter.emit("bool")
             self.next_token()
         else:
             # Error

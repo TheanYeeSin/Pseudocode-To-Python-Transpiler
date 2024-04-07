@@ -79,6 +79,9 @@ class Lexer:
         elif self.current_char == "=":  # Equal to (Not assigning)
             token = Token(self.current_char, TokenTypes.EQEQ)
 
+        elif self.current_char == ":":
+            token = Token(self.current_char, TokenTypes.COLON)
+
         elif self.current_char == "<":
             if self.peek() == "=":  # Less than or equal to
                 last_char = self.current_char
@@ -136,10 +139,13 @@ class Lexer:
                 self.next_char()
             token_text = self.input[start_pos : self.current_pos + 1]
             keyword = Token.check_keyword(token_text)
-            if keyword is None:  # Identifier
+            typing = Token.check_typing(token_text)
+            if keyword is None and typing is None:  # Identifier
                 token = Token(token_text, TokenTypes.IDENT)
-            else:
+            elif keyword is not None:
                 token = Token(token_text, keyword)
+            else:
+                token = Token(token_text, typing)
         else:
             self.abort(f"Unknown token: {self.current_char}")
 

@@ -19,4 +19,4 @@ python run.py {text file}
 | IF ENDIF| DONE |
 | ELSE    | WIP |
 | WHILE - ENDWHILE | DONE |
-| DECLARE | WIP |
+| DECLARE | PARTIALLY DONE |

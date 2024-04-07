@@ -1,3 +1,4 @@
+DECLARE Weight : INTEGER
 IF Weight < 70 THEN
     OUTPUT "You can continue as normal"
 ENDIF

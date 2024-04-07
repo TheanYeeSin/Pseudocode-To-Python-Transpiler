@@ -10,7 +10,18 @@ class Token:
     @staticmethod
     def check_keyword(token_text: str) -> Optional["TokenTypes"]:
         for type in TokenTypes:
-            if type.name == token_text and type.value >= 100 and type.value < 200:
+            if (
+                type.name == token_text.upper()
+                and type.value >= 100
+                and type.value < 200
+            ):
+                return type
+        return None
+
+    @staticmethod
+    def check_typing(token_text: str) -> Optional["TokenTypes"]:
+        for type in TokenTypes:
+            if type.name == token_text.upper() and type.value >= 10 and type.value < 20:
                 return type
         return None
 
@@ -20,7 +31,13 @@ class TokenTypes(Enum):
     NEWLINE = 0
     NUMBER = 1
     IDENT = 2  # IDENTIFIER
-    STRING = 3
+
+    # TYPING
+    INTEGER = 10
+    REAL = 11
+    CHAR = 12
+    STRING = 13
+    BOOLEAN = 14
 
     # KEYWORDS
     OUTPUT = 101
@@ -50,3 +67,5 @@ class TokenTypes(Enum):
     LTEQ = 210
     GT = 211
     GTEQ = 212
+
+    COLON = 213
