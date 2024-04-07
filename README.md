@@ -15,4 +15,8 @@ python run.py {text file}
 
 | Feature | Status |
 |---------|--------|
-| ALL     | WIP    |
+| ALL     | WIP |
+| IF ENDIF| DONE |
+| ELSE    | WIP |
+| WHILE - ENDWHILE | DONE |
+| DECLARE | WIP |

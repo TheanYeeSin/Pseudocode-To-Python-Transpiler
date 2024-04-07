@@ -1,27 +1,27 @@
 from enum import Enum
 from typing import Optional
 
+
 class Token:
-    def __init__(self, token_text: str, token_type: 'TokenTypes'):
+    def __init__(self, token_text: str, token_type: "TokenTypes"):
         self.text = token_text
         self.type = token_type
-        
+
     @staticmethod
-    def check_keyword(token_text: str) -> Optional['TokenTypes']:
+    def check_keyword(token_text: str) -> Optional["TokenTypes"]:
         for type in TokenTypes:
-            if (type.name == token_text and
-                type.value >= 100 and
-                type.value < 200):
+            if type.name == token_text and type.value >= 100 and type.value < 200:
                 return type
         return None
+
 
 class TokenTypes(Enum):
     EOF = -1
     NEWLINE = 0
     NUMBER = 1
-    IDENT = 2 # IDENTIFIER
+    IDENT = 2  # IDENTIFIER
     STRING = 3
-    
+
     # KEYWORDS
     OUTPUT = 101
     INPUT = 102
@@ -31,17 +31,18 @@ class TokenTypes(Enum):
     WHILE = 106
     REPEAT = 107
     ENDWHILE = 108
-    
+    DECLARE = 109
+
     # TODO: Support more keywords
-    
+
     # ARITHMETIC OPERATORS
-    EQ = 201  
+    EQ = 201
     ADDITION = 202
     SUBTRACTION = 203
     MULTIPLICATION = 204
     DIVISION = 205
     POWER = 206
-    
+
     # LOGICAL OPERATORS
     EQEQ = 207
     NOTEQ = 208
@@ -49,9 +50,3 @@ class TokenTypes(Enum):
     LTEQ = 210
     GT = 211
     GTEQ = 212
-    
-    
-    
-    
-    
-    
